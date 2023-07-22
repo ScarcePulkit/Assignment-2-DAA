@@ -1,0 +1,197 @@
+\hypertarget{main_8cpp}{}\doxysection{main.\+cpp File Reference}
+\label{main_8cpp}\index{main.cpp@{main.cpp}}
+
+
+This file contains the implementation of the Ford Fulkerson algorithm.  
+
+
+{\ttfamily \#include $<$bits/stdc++.\+h$>$}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{main_8cpp_a600eaf353befc174637855795f12d258}{endl}}~\char`\"{}\textbackslash{}n\char`\"{}
+\item 
+\#define \mbox{\hyperlink{main_8cpp_ae1d1ec9482079231e898236e2b23c9ba}{ll}}~long long
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{main_8cpp_a81e7b82f93ac4a508b07239387509ef0}{dfs\+\_\+mincut}} (\mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}} src, vector$<$ bool $>$ \&vis)
+\item 
+bool \mbox{\hyperlink{main_8cpp_ab2e4f1b24019fa993d7e1df724135a4c}{dfs}} (\mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}} src, \mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}} dest, vector$<$ \mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}} $>$ \&path, vector$<$ vector$<$ \mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}} $>$ $>$ \&adj, vector$<$ bool $>$ \&vis)
+\item 
+\mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}} \mbox{\hyperlink{main_8cpp_ad60754ab2b2c2d727283f63813aa5bb3}{find\+\_\+ford\+\_\+fulkerson}} (vector$<$ vector$<$ \mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}} $>$ $>$ \&adj, \mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}} src, \mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}} dest, vector$<$ vector$<$ \mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}} $>$ $>$ \&adj\+\_\+g)
+\item 
+void \mbox{\hyperlink{main_8cpp_afde07648040c326129670547738a0c86}{task1}} ()
+\item 
+void \mbox{\hyperlink{main_8cpp_ace729e6ad571671db31c448c87b2331b}{task3}} ()
+\item 
+\mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}} \mbox{\hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ vector$<$ \mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}} $>$ $>$ \mbox{\hyperlink{main_8cpp_ad1809bd1cfc7627700f77a68c7b0d8cb}{adj\+\_\+res}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains the implementation of the Ford Fulkerson algorithm. 
+
+This file contains the implementation of the Ford Fulkerson algorithm for the problem of finding the maximum output flow from the source to the destination and min-\/cur flow. 
+
+Definition in file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{main_8cpp_a600eaf353befc174637855795f12d258}\label{main_8cpp_a600eaf353befc174637855795f12d258}} 
+\index{main.cpp@{main.cpp}!endl@{endl}}
+\index{endl@{endl}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{endl}{endl}}
+{\footnotesize\ttfamily \#define endl~\char`\"{}\textbackslash{}n\char`\"{}}
+
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00020}{20}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\mbox{\Hypertarget{main_8cpp_ae1d1ec9482079231e898236e2b23c9ba}\label{main_8cpp_ae1d1ec9482079231e898236e2b23c9ba}} 
+\index{main.cpp@{main.cpp}!ll@{ll}}
+\index{ll@{ll}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{ll}{ll}}
+{\footnotesize\ttfamily \#define ll~long long}
+
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00021}{21}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{main_8cpp_ab2e4f1b24019fa993d7e1df724135a4c}\label{main_8cpp_ab2e4f1b24019fa993d7e1df724135a4c}} 
+\index{main.cpp@{main.cpp}!dfs@{dfs}}
+\index{dfs@{dfs}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{dfs()}{dfs()}}
+{\footnotesize\ttfamily bool dfs (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}}}]{src,  }\item[{\mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}}}]{dest,  }\item[{vector$<$ \mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}} $>$ \&}]{path,  }\item[{vector$<$ vector$<$ \mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}} $>$ $>$ \&}]{adj,  }\item[{vector$<$ bool $>$ \&}]{vis }\end{DoxyParamCaption})}
+
+This function is used to find the path from src to dest in the residual graph 
+\begin{DoxyParams}{Parameters}
+{\em int} & src -\/ the source vertex \\
+\hline
+{\em int} & dest -\/ the destination vertex \\
+\hline
+{\em vector$<$int$>$} & \&path -\/ the vector to store the path from src to dest \\
+\hline
+{\em vector$<$vector$<$int$>$$>$} & \&adj -\/ the adjacency matrix of the residual graph \\
+\hline
+{\em vector$<$bool$>$} & \&vis -\/ the vector to store the visited vertices \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool -\/ true if path exists, false otherwise
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00048}{48}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\mbox{\Hypertarget{main_8cpp_a81e7b82f93ac4a508b07239387509ef0}\label{main_8cpp_a81e7b82f93ac4a508b07239387509ef0}} 
+\index{main.cpp@{main.cpp}!dfs\_mincut@{dfs\_mincut}}
+\index{dfs\_mincut@{dfs\_mincut}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{dfs\_mincut()}{dfs\_mincut()}}
+{\footnotesize\ttfamily void dfs\+\_\+mincut (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}}}]{src,  }\item[{vector$<$ bool $>$ \&}]{vis }\end{DoxyParamCaption})}
+
+This function is used to find the connected components of the vertex src in the residual graph 
+\begin{DoxyParams}{Parameters}
+{\em int} & src -\/ the vertex whose connected components are to be found \\
+\hline
+{\em vector$<$bool$>$} & \&vis -\/ the vector to store the visited vertices \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00027}{27}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\mbox{\Hypertarget{main_8cpp_ad60754ab2b2c2d727283f63813aa5bb3}\label{main_8cpp_ad60754ab2b2c2d727283f63813aa5bb3}} 
+\index{main.cpp@{main.cpp}!find\_ford\_fulkerson@{find\_ford\_fulkerson}}
+\index{find\_ford\_fulkerson@{find\_ford\_fulkerson}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{find\_ford\_fulkerson()}{find\_ford\_fulkerson()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}} find\+\_\+ford\+\_\+fulkerson (\begin{DoxyParamCaption}\item[{vector$<$ vector$<$ \mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}} $>$ $>$ \&}]{adj,  }\item[{\mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}}}]{src,  }\item[{\mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}}}]{dest,  }\item[{vector$<$ vector$<$ \mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}} $>$ $>$ \&}]{adj\+\_\+g }\end{DoxyParamCaption})}
+
+This function is used to find the maximum output flow from the source to the destination -\/ Ford Fulkerson Algorithm 
+\begin{DoxyParams}{Parameters}
+{\em vector$<$vector$<$int$>$$>$} & \&adj -\/ the adjacency matrix of the graph \\
+\hline
+{\em int} & src -\/ the source vertex \\
+\hline
+{\em int} & dest -\/ the destination vertex \\
+\hline
+{\em vector$<$vector$<$int$>$$>$} & \&adj\+\_\+g -\/ the adjacency matrix of the flow graph\\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00087}{87}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\mbox{\Hypertarget{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}} main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This is the main function. First it takes the input from the input.\+txt file. Then it prints the output to the output.\+txt file. call for the task1, task2, task3. 
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00282}{282}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\mbox{\Hypertarget{main_8cpp_afde07648040c326129670547738a0c86}\label{main_8cpp_afde07648040c326129670547738a0c86}} 
+\index{main.cpp@{main.cpp}!task1@{task1}}
+\index{task1@{task1}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{task1()}{task1()}}
+{\footnotesize\ttfamily void task1 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+\begin{DoxyItemize}
+\item Task1 and Task2 of the assignment \begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+
+\end{DoxyItemize}
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00161}{161}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\mbox{\Hypertarget{main_8cpp_ace729e6ad571671db31c448c87b2331b}\label{main_8cpp_ace729e6ad571671db31c448c87b2331b}} 
+\index{main.cpp@{main.cpp}!task3@{task3}}
+\index{task3@{task3}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{task3()}{task3()}}
+{\footnotesize\ttfamily void task3 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+\begin{DoxyItemize}
+\item Task3 of the assignment \begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+
+\end{DoxyItemize}
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00241}{241}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{main_8cpp_ad1809bd1cfc7627700f77a68c7b0d8cb}\label{main_8cpp_ad1809bd1cfc7627700f77a68c7b0d8cb}} 
+\index{main.cpp@{main.cpp}!adj\_res@{adj\_res}}
+\index{adj\_res@{adj\_res}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{adj\_res}{adj\_res}}
+{\footnotesize\ttfamily vector$<$vector$<$\mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}}$>$ $>$ adj\+\_\+res}
+
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00024}{24}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+

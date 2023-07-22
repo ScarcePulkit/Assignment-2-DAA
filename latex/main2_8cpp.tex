@@ -1,0 +1,391 @@
+\hypertarget{main2_8cpp}{}\doxysection{main2.\+cpp File Reference}
+\label{main2_8cpp}\index{main2.cpp@{main2.cpp}}
+
+
+This file contains the implementation of the Least Segment Squares algorithm.  
+
+
+{\ttfamily \#include $<$bits/stdc++.\+h$>$}\newline
+{\ttfamily \#include $<$ext/pb\+\_\+ds/assoc\+\_\+container.\+hpp$>$}\newline
+{\ttfamily \#include $<$ext/pb\+\_\+ds/tree\+\_\+policy.\+hpp$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structpoint}{point}}
+\begin{DoxyCompactList}\small\item\em This is the point structure which contains the x and y coordinate of the point. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{main2_8cpp_a8cda3c359c9a97fad87cfcbd79d3fa3e}{in}}(n)~\mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}} n; cin$>$$>$n;
+\item 
+\#define \mbox{\hyperlink{main2_8cpp_a903054ae14c61b1d440291818185c51c}{w}}(x)~\mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}} x; cin$>$$>$x; while(x-\/-\/)
+\item 
+\#define \mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}}~long long
+\item 
+\#define \mbox{\hyperlink{main2_8cpp_ad8ab729381f270b100f3d05b6c6676fc}{str}}(s)~string s; cin$>$$>$s;
+\item 
+\#define \mbox{\hyperlink{main2_8cpp_a8e7b6a92f58a7032f4ff4682d10024bb}{sz}}(x)~static\+\_\+cast$<$\mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}}$>$(x.\+size())
+\item 
+\#define \mbox{\hyperlink{main2_8cpp_a600eaf353befc174637855795f12d258}{endl}}~\char`\"{}\textbackslash{}n\char`\"{}
+\item 
+\#define \mbox{\hyperlink{main2_8cpp_a49bc164f30e64702250d2cbea09bf86c}{dbg}}(x)~cerr $<$$<$ \#x $<$$<$ \char`\"{}-\/$>$\char`\"{} $<$$<$ x $<$$<$ \char`\"{}\textbackslash{}n\char`\"{}
+\item 
+\#define \mbox{\hyperlink{main2_8cpp_ac2356f0bb1d1820f037b749488bfb375}{prnt}}(x)~cerr$<$$<$\#x$<$$<$\textquotesingle{}\{\textquotesingle{};for(auto T\+:x)cerr$<$$<$T$<$$<$\textquotesingle{} \textquotesingle{};cerr$<$$<$\char`\"{}\}\textbackslash{}n\char`\"{};
+\item 
+\#define \mbox{\hyperlink{main2_8cpp_abe08efbd716d02fd199a1ee2b6eb50d8}{prntp}}(x)~cerr$<$$<$\#x$<$$<$\textquotesingle{}\{\textquotesingle{};for(auto T\+:x)cerr$<$$<$T.\+first$<$$<$\textquotesingle{}-\/\textquotesingle{}$<$$<$T.\+second$<$$<$\textquotesingle{} \textquotesingle{};cerr$<$$<$\char`\"{}\}\textbackslash{}n\char`\"{};
+\item 
+\#define \mbox{\hyperlink{main2_8cpp_a12c2040f25d8e3a7b9e1c2024c618cb6}{INF}}~numeric\+\_\+limits$<$double$>$\+::infinity()
+\item 
+\#define \mbox{\hyperlink{main2_8cpp_a8091c2bcff55cbe0a4a145fd5fb7c22d}{FAST}}~cin.\+tie(0)-\/$>$sync\+\_\+with\+\_\+stdio(0);
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef tree$<$ \mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}}, null\+\_\+type, less$<$ \mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}} $>$, rb\+\_\+tree\+\_\+tag, tree\+\_\+order\+\_\+statistics\+\_\+node\+\_\+update $>$ \mbox{\hyperlink{main2_8cpp_a01a78776048b129b2ba8f23ae1fc3d81}{pbds}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{main2_8cpp_aebcb9926e0b04d8a0b79595762465c9e}{calculate\+\_\+cost}} (vector$<$ vector$<$ double $>$ $>$ \&e, vector$<$ double $>$ \&dp, vector$<$ double $>$ \&segments, \mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}} n, \mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}} c)
+\begin{DoxyCompactList}\small\item\em This is the main function which is used to calculate the optimal cost of the line fitting problem. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main2_8cpp_a3bdb74b5db95b5be4501f2b35f42a999}{print\+\_\+cost}} (vector$<$ double $>$ \&dp, \mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}} n)
+\begin{DoxyCompactList}\small\item\em This is the function which is used to print the optimal cost of the line fitting problem. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main2_8cpp_ae42dd14d00885f34be593108f7a9f61b}{print\+\_\+solution}} (vector$<$ vector$<$ double $>$ $>$ \&slope, vector$<$ vector$<$ double $>$ $>$ \&intercept, stack$<$ \mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}} $>$ \&s)
+\begin{DoxyCompactList}\small\item\em This is the function which is used to print the optimal solution of the line fitting problem. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main2_8cpp_acb56f06ff98118388bfa27afda18dbce}{calculate\+\_\+slope\+\_\+intercept}} (vector$<$ \mbox{\hyperlink{structpoint}{point}} $>$points, vector$<$ vector$<$ double $>$ $>$ \&slope, vector$<$ vector$<$ double $>$ $>$ \&intercept, vector$<$ vector$<$ double $>$ $>$ \&e, \mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}} n, vector$<$ double $>$ \&sumX, vector$<$ double $>$ \&sumY, vector$<$ double $>$ \&sum\+XY, vector$<$ double $>$ \&sum\+XX)
+\begin{DoxyCompactList}\small\item\em This is the function which is used to calculate the slope and intercept of the line. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main2_8cpp_a8ad49cdd69eb8447d9840dbcbd018a47}{preparing\+\_\+the\+\_\+recipe}} (vector$<$ \mbox{\hyperlink{structpoint}{point}} $>$points, vector$<$ double $>$ \&sumX, vector$<$ double $>$ \&sumY, vector$<$ double $>$ \&sum\+XY, vector$<$ double $>$ \&sum\+XX, \mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}} n)
+\begin{DoxyCompactList}\small\item\em This is the function which is used to calculate the sum of the x,y,xy and xx coordinate of the points. \end{DoxyCompactList}\item 
+int32\+\_\+t \mbox{\hyperlink{main2_8cpp_a196718f834091385d38586a0ce4009dc}{main}} ()
+\begin{DoxyCompactList}\small\item\em This is the main function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}} \mbox{\hyperlink{main2_8cpp_a211beb98adfc4719d3e775845ec57b3e}{mod}} = 1000000007
+\item 
+const \mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}} \mbox{\hyperlink{main2_8cpp_af7dbda7167e22cb3417c16f78061ad80}{MAX}} =10000
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains the implementation of the Least Segment Squares algorithm. 
+
+This file contains the implementation of the Least Segment Squares algorithm for the problem of finding the optimal cost of the line fitting problem. 
+
+Definition in file \mbox{\hyperlink{main2_8cpp_source}{main2.\+cpp}}.
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{main2_8cpp_a49bc164f30e64702250d2cbea09bf86c}\label{main2_8cpp_a49bc164f30e64702250d2cbea09bf86c}} 
+\index{main2.cpp@{main2.cpp}!dbg@{dbg}}
+\index{dbg@{dbg}!main2.cpp@{main2.cpp}}
+\doxysubsubsection{\texorpdfstring{dbg}{dbg}}
+{\footnotesize\ttfamily \#define dbg(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~cerr $<$$<$ \#x $<$$<$ \char`\"{}-\/$>$\char`\"{} $<$$<$ x $<$$<$ \char`\"{}\textbackslash{}n\char`\"{}}
+
+
+
+Definition at line \mbox{\hyperlink{main2_8cpp_source_l00022}{22}} of file \mbox{\hyperlink{main2_8cpp_source}{main2.\+cpp}}.
+
+\mbox{\Hypertarget{main2_8cpp_a600eaf353befc174637855795f12d258}\label{main2_8cpp_a600eaf353befc174637855795f12d258}} 
+\index{main2.cpp@{main2.cpp}!endl@{endl}}
+\index{endl@{endl}!main2.cpp@{main2.cpp}}
+\doxysubsubsection{\texorpdfstring{endl}{endl}}
+{\footnotesize\ttfamily \#define endl~\char`\"{}\textbackslash{}n\char`\"{}}
+
+
+
+Definition at line \mbox{\hyperlink{main2_8cpp_source_l00021}{21}} of file \mbox{\hyperlink{main2_8cpp_source}{main2.\+cpp}}.
+
+\mbox{\Hypertarget{main2_8cpp_a8091c2bcff55cbe0a4a145fd5fb7c22d}\label{main2_8cpp_a8091c2bcff55cbe0a4a145fd5fb7c22d}} 
+\index{main2.cpp@{main2.cpp}!FAST@{FAST}}
+\index{FAST@{FAST}!main2.cpp@{main2.cpp}}
+\doxysubsubsection{\texorpdfstring{FAST}{FAST}}
+{\footnotesize\ttfamily \#define FAST~cin.\+tie(0)-\/$>$sync\+\_\+with\+\_\+stdio(0);}
+
+
+
+Definition at line \mbox{\hyperlink{main2_8cpp_source_l00028}{28}} of file \mbox{\hyperlink{main2_8cpp_source}{main2.\+cpp}}.
+
+\mbox{\Hypertarget{main2_8cpp_a8cda3c359c9a97fad87cfcbd79d3fa3e}\label{main2_8cpp_a8cda3c359c9a97fad87cfcbd79d3fa3e}} 
+\index{main2.cpp@{main2.cpp}!in@{in}}
+\index{in@{in}!main2.cpp@{main2.cpp}}
+\doxysubsubsection{\texorpdfstring{in}{in}}
+{\footnotesize\ttfamily \#define in(\begin{DoxyParamCaption}\item[{}]{n }\end{DoxyParamCaption})~\mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}} n; cin$>$$>$n;}
+
+
+
+Definition at line \mbox{\hyperlink{main2_8cpp_source_l00016}{16}} of file \mbox{\hyperlink{main2_8cpp_source}{main2.\+cpp}}.
+
+\mbox{\Hypertarget{main2_8cpp_a12c2040f25d8e3a7b9e1c2024c618cb6}\label{main2_8cpp_a12c2040f25d8e3a7b9e1c2024c618cb6}} 
+\index{main2.cpp@{main2.cpp}!INF@{INF}}
+\index{INF@{INF}!main2.cpp@{main2.cpp}}
+\doxysubsubsection{\texorpdfstring{INF}{INF}}
+{\footnotesize\ttfamily \#define INF~numeric\+\_\+limits$<$double$>$\+::infinity()}
+
+
+
+Definition at line \mbox{\hyperlink{main2_8cpp_source_l00026}{26}} of file \mbox{\hyperlink{main2_8cpp_source}{main2.\+cpp}}.
+
+\mbox{\Hypertarget{main2_8cpp_ae88a82478e3818cade3f598c25437904}\label{main2_8cpp_ae88a82478e3818cade3f598c25437904}} 
+\index{main2.cpp@{main2.cpp}!int@{int}}
+\index{int@{int}!main2.cpp@{main2.cpp}}
+\doxysubsubsection{\texorpdfstring{int}{int}}
+{\footnotesize\ttfamily \#define int~long long}
+
+
+
+Definition at line \mbox{\hyperlink{main2_8cpp_source_l00018}{18}} of file \mbox{\hyperlink{main2_8cpp_source}{main2.\+cpp}}.
+
+\mbox{\Hypertarget{main2_8cpp_ac2356f0bb1d1820f037b749488bfb375}\label{main2_8cpp_ac2356f0bb1d1820f037b749488bfb375}} 
+\index{main2.cpp@{main2.cpp}!prnt@{prnt}}
+\index{prnt@{prnt}!main2.cpp@{main2.cpp}}
+\doxysubsubsection{\texorpdfstring{prnt}{prnt}}
+{\footnotesize\ttfamily \#define prnt(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~cerr$<$$<$\#x$<$$<$\textquotesingle{}\{\textquotesingle{};for(auto T\+:x)cerr$<$$<$T$<$$<$\textquotesingle{} \textquotesingle{};cerr$<$$<$\char`\"{}\}\textbackslash{}n\char`\"{};}
+
+
+
+Definition at line \mbox{\hyperlink{main2_8cpp_source_l00023}{23}} of file \mbox{\hyperlink{main2_8cpp_source}{main2.\+cpp}}.
+
+\mbox{\Hypertarget{main2_8cpp_abe08efbd716d02fd199a1ee2b6eb50d8}\label{main2_8cpp_abe08efbd716d02fd199a1ee2b6eb50d8}} 
+\index{main2.cpp@{main2.cpp}!prntp@{prntp}}
+\index{prntp@{prntp}!main2.cpp@{main2.cpp}}
+\doxysubsubsection{\texorpdfstring{prntp}{prntp}}
+{\footnotesize\ttfamily \#define prntp(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~cerr$<$$<$\#x$<$$<$\textquotesingle{}\{\textquotesingle{};for(auto T\+:x)cerr$<$$<$T.\+first$<$$<$\textquotesingle{}-\/\textquotesingle{}$<$$<$T.\+second$<$$<$\textquotesingle{} \textquotesingle{};cerr$<$$<$\char`\"{}\}\textbackslash{}n\char`\"{};}
+
+
+
+Definition at line \mbox{\hyperlink{main2_8cpp_source_l00024}{24}} of file \mbox{\hyperlink{main2_8cpp_source}{main2.\+cpp}}.
+
+\mbox{\Hypertarget{main2_8cpp_ad8ab729381f270b100f3d05b6c6676fc}\label{main2_8cpp_ad8ab729381f270b100f3d05b6c6676fc}} 
+\index{main2.cpp@{main2.cpp}!str@{str}}
+\index{str@{str}!main2.cpp@{main2.cpp}}
+\doxysubsubsection{\texorpdfstring{str}{str}}
+{\footnotesize\ttfamily \#define str(\begin{DoxyParamCaption}\item[{}]{s }\end{DoxyParamCaption})~string s; cin$>$$>$s;}
+
+
+
+Definition at line \mbox{\hyperlink{main2_8cpp_source_l00019}{19}} of file \mbox{\hyperlink{main2_8cpp_source}{main2.\+cpp}}.
+
+\mbox{\Hypertarget{main2_8cpp_a8e7b6a92f58a7032f4ff4682d10024bb}\label{main2_8cpp_a8e7b6a92f58a7032f4ff4682d10024bb}} 
+\index{main2.cpp@{main2.cpp}!sz@{sz}}
+\index{sz@{sz}!main2.cpp@{main2.cpp}}
+\doxysubsubsection{\texorpdfstring{sz}{sz}}
+{\footnotesize\ttfamily \#define sz(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~static\+\_\+cast$<$\mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}}$>$(x.\+size())}
+
+
+
+Definition at line \mbox{\hyperlink{main2_8cpp_source_l00020}{20}} of file \mbox{\hyperlink{main2_8cpp_source}{main2.\+cpp}}.
+
+\mbox{\Hypertarget{main2_8cpp_a903054ae14c61b1d440291818185c51c}\label{main2_8cpp_a903054ae14c61b1d440291818185c51c}} 
+\index{main2.cpp@{main2.cpp}!w@{w}}
+\index{w@{w}!main2.cpp@{main2.cpp}}
+\doxysubsubsection{\texorpdfstring{w}{w}}
+{\footnotesize\ttfamily \#define w(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~\mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}} x; cin$>$$>$x; while(x-\/-\/)}
+
+
+
+Definition at line \mbox{\hyperlink{main2_8cpp_source_l00017}{17}} of file \mbox{\hyperlink{main2_8cpp_source}{main2.\+cpp}}.
+
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{main2_8cpp_a01a78776048b129b2ba8f23ae1fc3d81}\label{main2_8cpp_a01a78776048b129b2ba8f23ae1fc3d81}} 
+\index{main2.cpp@{main2.cpp}!pbds@{pbds}}
+\index{pbds@{pbds}!main2.cpp@{main2.cpp}}
+\doxysubsubsection{\texorpdfstring{pbds}{pbds}}
+{\footnotesize\ttfamily typedef tree$<$\mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}}, null\+\_\+type, less$<$\mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}}$>$, rb\+\_\+tree\+\_\+tag, tree\+\_\+order\+\_\+statistics\+\_\+node\+\_\+update$>$ \mbox{\hyperlink{main2_8cpp_a01a78776048b129b2ba8f23ae1fc3d81}{pbds}}}
+
+
+
+Definition at line \mbox{\hyperlink{main2_8cpp_source_l00032}{32}} of file \mbox{\hyperlink{main2_8cpp_source}{main2.\+cpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{main2_8cpp_aebcb9926e0b04d8a0b79595762465c9e}\label{main2_8cpp_aebcb9926e0b04d8a0b79595762465c9e}} 
+\index{main2.cpp@{main2.cpp}!calculate\_cost@{calculate\_cost}}
+\index{calculate\_cost@{calculate\_cost}!main2.cpp@{main2.cpp}}
+\doxysubsubsection{\texorpdfstring{calculate\_cost()}{calculate\_cost()}}
+{\footnotesize\ttfamily void calculate\+\_\+cost (\begin{DoxyParamCaption}\item[{vector$<$ vector$<$ double $>$ $>$ \&}]{e,  }\item[{vector$<$ double $>$ \&}]{dp,  }\item[{vector$<$ double $>$ \&}]{segments,  }\item[{\mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}}}]{n,  }\item[{\mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}}}]{c }\end{DoxyParamCaption})}
+
+
+
+This is the main function which is used to calculate the optimal cost of the line fitting problem. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em points} & This is the vector of points which contains the x and y coordinate of the points \\
+\hline
+{\em n} & This is the number of points \\
+\hline
+{\em c} & This is the constant which is used to calculate the cost \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+double This returns the optimal cost of the line fitting problem 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{main2_8cpp_source_l00067}{67}} of file \mbox{\hyperlink{main2_8cpp_source}{main2.\+cpp}}.
+
+\mbox{\Hypertarget{main2_8cpp_acb56f06ff98118388bfa27afda18dbce}\label{main2_8cpp_acb56f06ff98118388bfa27afda18dbce}} 
+\index{main2.cpp@{main2.cpp}!calculate\_slope\_intercept@{calculate\_slope\_intercept}}
+\index{calculate\_slope\_intercept@{calculate\_slope\_intercept}!main2.cpp@{main2.cpp}}
+\doxysubsubsection{\texorpdfstring{calculate\_slope\_intercept()}{calculate\_slope\_intercept()}}
+{\footnotesize\ttfamily void calculate\+\_\+slope\+\_\+intercept (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{structpoint}{point}} $>$}]{points,  }\item[{vector$<$ vector$<$ double $>$ $>$ \&}]{slope,  }\item[{vector$<$ vector$<$ double $>$ $>$ \&}]{intercept,  }\item[{vector$<$ vector$<$ double $>$ $>$ \&}]{e,  }\item[{\mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}}}]{n,  }\item[{vector$<$ double $>$ \&}]{sumX,  }\item[{vector$<$ double $>$ \&}]{sumY,  }\item[{vector$<$ double $>$ \&}]{sum\+XY,  }\item[{vector$<$ double $>$ \&}]{sum\+XX }\end{DoxyParamCaption})}
+
+
+
+This is the function which is used to calculate the slope and intercept of the line. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em points} & This is the vector which contains the x and y coordinate of the points \\
+\hline
+{\em slope} & This is the vector which contains the slope of the line \\
+\hline
+{\em intercept} & This is the vector which contains the intercept of the line \\
+\hline
+{\em e} & This is the vector which contains the error of the line \\
+\hline
+{\em n} & This is the number of points \\
+\hline
+{\em sumX} & This is the vector which contains the sum of the x coordinate of the points \\
+\hline
+{\em sumY} & This is the vector which contains the sum of the y coordinate of the points \\
+\hline
+{\em sum\+XY} & This is the vector which contains the sum of the product of the x and y coordinate of the points \\
+\hline
+{\em sum\+XX} & This is the vector which contains the sum of the square of the x coordinate of the points \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void This returns nothing 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{main2_8cpp_source_l00130}{130}} of file \mbox{\hyperlink{main2_8cpp_source}{main2.\+cpp}}.
+
+\mbox{\Hypertarget{main2_8cpp_a196718f834091385d38586a0ce4009dc}\label{main2_8cpp_a196718f834091385d38586a0ce4009dc}} 
+\index{main2.cpp@{main2.cpp}!main@{main}}
+\index{main@{main}!main2.cpp@{main2.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int32\+\_\+t main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This is the main function. 
+
+\begin{DoxyReturn}{Returns}
+int This returns 0 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{main2_8cpp_source_l00181}{181}} of file \mbox{\hyperlink{main2_8cpp_source}{main2.\+cpp}}.
+
+\mbox{\Hypertarget{main2_8cpp_a8ad49cdd69eb8447d9840dbcbd018a47}\label{main2_8cpp_a8ad49cdd69eb8447d9840dbcbd018a47}} 
+\index{main2.cpp@{main2.cpp}!preparing\_the\_recipe@{preparing\_the\_recipe}}
+\index{preparing\_the\_recipe@{preparing\_the\_recipe}!main2.cpp@{main2.cpp}}
+\doxysubsubsection{\texorpdfstring{preparing\_the\_recipe()}{preparing\_the\_recipe()}}
+{\footnotesize\ttfamily void preparing\+\_\+the\+\_\+recipe (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{structpoint}{point}} $>$}]{points,  }\item[{vector$<$ double $>$ \&}]{sumX,  }\item[{vector$<$ double $>$ \&}]{sumY,  }\item[{vector$<$ double $>$ \&}]{sum\+XY,  }\item[{vector$<$ double $>$ \&}]{sum\+XX,  }\item[{\mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}}}]{n }\end{DoxyParamCaption})}
+
+
+
+This is the function which is used to calculate the sum of the x,y,xy and xx coordinate of the points. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em points} & This is the vector which contains the x and y coordinate of the points \\
+\hline
+{\em sumX} & This is the vector which contains the sum of the x coordinate of the points \\
+\hline
+{\em sumY} & This is the vector which contains the sum of the y coordinate of the points \\
+\hline
+{\em sum\+XY} & This is the vector which contains the sum of the product of the x and y coordinate of the points \\
+\hline
+{\em sum\+XX} & This is the vector which contains the sum of the square of the x coordinate of the points \\
+\hline
+{\em n} & This is the number of points \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void This returns nothing 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{main2_8cpp_source_l00163}{163}} of file \mbox{\hyperlink{main2_8cpp_source}{main2.\+cpp}}.
+
+\mbox{\Hypertarget{main2_8cpp_a3bdb74b5db95b5be4501f2b35f42a999}\label{main2_8cpp_a3bdb74b5db95b5be4501f2b35f42a999}} 
+\index{main2.cpp@{main2.cpp}!print\_cost@{print\_cost}}
+\index{print\_cost@{print\_cost}!main2.cpp@{main2.cpp}}
+\doxysubsubsection{\texorpdfstring{print\_cost()}{print\_cost()}}
+{\footnotesize\ttfamily void print\+\_\+cost (\begin{DoxyParamCaption}\item[{vector$<$ double $>$ \&}]{dp,  }\item[{\mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}}}]{n }\end{DoxyParamCaption})}
+
+
+
+This is the function which is used to print the optimal cost of the line fitting problem. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dp} & This is the vector which contains the optimal cost of the line fitting problem \\
+\hline
+{\em n} & This is the number of points \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void This returns nothing 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{main2_8cpp_source_l00091}{91}} of file \mbox{\hyperlink{main2_8cpp_source}{main2.\+cpp}}.
+
+\mbox{\Hypertarget{main2_8cpp_ae42dd14d00885f34be593108f7a9f61b}\label{main2_8cpp_ae42dd14d00885f34be593108f7a9f61b}} 
+\index{main2.cpp@{main2.cpp}!print\_solution@{print\_solution}}
+\index{print\_solution@{print\_solution}!main2.cpp@{main2.cpp}}
+\doxysubsubsection{\texorpdfstring{print\_solution()}{print\_solution()}}
+{\footnotesize\ttfamily void print\+\_\+solution (\begin{DoxyParamCaption}\item[{vector$<$ vector$<$ double $>$ $>$ \&}]{slope,  }\item[{vector$<$ vector$<$ double $>$ $>$ \&}]{intercept,  }\item[{stack$<$ \mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}} $>$ \&}]{s }\end{DoxyParamCaption})}
+
+
+
+This is the function which is used to print the optimal solution of the line fitting problem. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em slope} & This is the vector which contains the slope of the line \\
+\hline
+{\em intercept} & This is the vector which contains the intercept of the line \\
+\hline
+{\em s} & This is the stack which contains the optimal solution of the line fitting problem \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void This returns nothing 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{main2_8cpp_source_l00103}{103}} of file \mbox{\hyperlink{main2_8cpp_source}{main2.\+cpp}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{main2_8cpp_af7dbda7167e22cb3417c16f78061ad80}\label{main2_8cpp_af7dbda7167e22cb3417c16f78061ad80}} 
+\index{main2.cpp@{main2.cpp}!MAX@{MAX}}
+\index{MAX@{MAX}!main2.cpp@{main2.cpp}}
+\doxysubsubsection{\texorpdfstring{MAX}{MAX}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}} MAX =10000}
+
+
+
+Definition at line \mbox{\hyperlink{main2_8cpp_source_l00027}{27}} of file \mbox{\hyperlink{main2_8cpp_source}{main2.\+cpp}}.
+
+\mbox{\Hypertarget{main2_8cpp_a211beb98adfc4719d3e775845ec57b3e}\label{main2_8cpp_a211beb98adfc4719d3e775845ec57b3e}} 
+\index{main2.cpp@{main2.cpp}!mod@{mod}}
+\index{mod@{mod}!main2.cpp@{main2.cpp}}
+\doxysubsubsection{\texorpdfstring{mod}{mod}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{main2_8cpp_ae88a82478e3818cade3f598c25437904}{int}} mod = 1000000007}
+
+
+
+Definition at line \mbox{\hyperlink{main2_8cpp_source_l00025}{25}} of file \mbox{\hyperlink{main2_8cpp_source}{main2.\+cpp}}.
+

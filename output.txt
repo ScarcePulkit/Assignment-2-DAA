@@ -1,0 +1,4 @@
+The optimal cost is: 4.94286
+
+ Optimal Solution is:
+The line is y=0.142857x+ 0.942857 from points 1 to 6
